@@ -2,6 +2,7 @@
 
 from fastapi import FastAPI
 from pydantic import BaseModel
+import uvicorn
 
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -30,3 +31,5 @@ def create_image(request: ImageRequest):
     resultado = createImagen(request.imagen64)
     return {"resultado": resultado}
 
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
